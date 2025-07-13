@@ -8,12 +8,19 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
-// ✅ Proper CORS config
 const corsOptions = {
-  origin: 'https://venue-frontend-flax.vercel.app', // allow your frontend
+  origin: 'https://venue-frontend-flax.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
+  optionsSuccessStatus: 200,
 };
+
 app.use(cors(corsOptions));
+
+// Allow preflight requests
+app.options('*', cors(corsOptions));
+
 
 // Middleware
 app.use(bodyParser.json());

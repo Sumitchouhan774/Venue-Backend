@@ -8,14 +8,7 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
-// ✅ FULL PERMISSION CORS (allow all origins)
-app.use(cors({
-  origin: '*',                  // allow all origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-app.options('*', cors()); // handle preflight requests
-
+app.use(cors());
 app.use(bodyParser.json());
 
 // ✅ Your Routes
